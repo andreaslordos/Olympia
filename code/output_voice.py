@@ -6,7 +6,7 @@ from os import chdir
 mixer.init()
 def voiceOutput(textToSay):
     try:
-        chdir("C:\\Users\\user\\Desktop\\Personal Assistant")
+        chdir(directory+"\\code")
         fullstr=""
         for strings in textToSay:
             fullstr+=strings+". "
