@@ -21,8 +21,14 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
     now=datetime.datetime.now()
     year=now.year
     mixer.init()
-    os.chdir("C:\\Users\\user\\Desktop\\Personal Assistant")
-
+    try:
+        dirFile=open("dir.txt","r")
+        directory=dirFile.read()
+        dirFile.close()
+    except FileNotFoundError:
+        input("Error! File not found. You did not run setup.py (found in master directory)")
+        quit()
+    os.chdir(dir+"\\resources")
     def confirmName(doIntro):
         try:
             name=open("name.txt",'r')
@@ -158,12 +164,6 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
             return("")
         return(voicequery)
 
-    '''
-    def voiceOutput(text):
-        for strings in text:
-            engine.say(strings)
-        engine.runAndWait()
-    '''
     def setup(confirmedName,confirmedGender,confirmedBirthday,confirmedLocation):
         while confirmedName==False or confirmedGender==False or confirmedBirthday==False and confirmedLocation==False:
             if confirmedName==False:
