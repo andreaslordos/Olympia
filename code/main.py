@@ -1,6 +1,10 @@
 #Main - calling program
 import os
-os.chdir("C:\\Users\\user\\Desktop\\Personal Assistant")
+dirFile=open("dir.txt","r")
+directory=dirFile.read()
+dirFile.close()
+
+os.chdir(dirFile+"\\code")
 
 import speech_recognition as sr
 import pyttsx
@@ -28,7 +32,9 @@ def voiceInput():
         audio=r.listen(source)
 
     try:
+        os.chdir(directory+"\\resources")
         mixer.music.load("2beep.mp3")
+        os.chdir(directory+"\\code")
         mixer.music.play()
         voicequery=r.recognize_google(audio)
     except sr.UnknownValueError:
@@ -40,22 +46,15 @@ def voiceInput():
     return(voicequery)
 
 def firstInput():
-    print("Entered firstInput")
     r=sr.Recognizer()
     with sr.Microphone() as source:
-        print("listening..")
         audio=r.listen(source)
-        print("Done listening!")
     try:
-        print("Sending shit to google..")
         voicequery=r.recognize_google(audio)
     except sr.UnknownValueError:
-        print("error")
         return("")
     except sr.RequestError as e:
-        print("error")
         return("")
-    print("Exiting with vq")
     return(voicequery)
 
 
@@ -66,8 +65,10 @@ def voiceOutput(textToSay):
             fullstr+=strings+". "
         fullstr=fullstr[:-1]
         whatToSay=tts(text=fullstr,lang='en')
+        os.chdir(directory+"\\resources")
         whatToSay.save("output.mp3")
         mixer.music.load("output.mp3")
+        os.chdir(directory+"\\code")
         mixer.music.play()
         audio=MP3("output.mp3")
         sleep(audio.info.length+2)
@@ -131,14 +132,12 @@ wikipediaFlag=False
 while True:
     if autoActivation==False:
         choice=firstInput()
-        print()
-        print(choice)
-        print()
     else:
         choice="olympia"
-    print(choice)
-    if "olympia" in choice.lower() or choice=="o":
+    if "olympia" in choice.lower():
+        os.chdir(directory+"\\resources")
         mixer.music.load("beep.mp3")
+        os.chdir(directory+"\\code")
         mixer.music.play()
         choice=voiceInput()
         if choice=="ERROR_ID 000" and autoActivation==False:
@@ -276,6 +275,7 @@ while True:
                     print("Cancelling")
                 else:
                     didntGetThat=True
+                    os.chdir(directory+"\\resources")
                     while didntGetThat==True:
                         didntGetThat=False
                         confirmedName=True
@@ -299,5 +299,6 @@ while True:
                             voiceOutput(["Sorry, I didn't quite get that. Can you repeat?"])
                             settingToChange=voiceInput()
                             didntGetThat=True
+                    os.chdir(directory+"\\code")
                     name,dateofbirth,gender,location=setMeUp(confirmedName,confirmedGender,confirmedBirthday,confirmedLocation)
                     voiceOutput(["Change confirmed."])
