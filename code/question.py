@@ -16,7 +16,7 @@ def answer(userinput):
         return answer
     
     try:
-        app_id="X6H6Y3-TW3AY7WKG8"
+        app_id=[REDACTED! GET YOUR OWN APP_ID AT https://developer.wolframalpha.com]
         answer=getSpoken(app_id,userinput.lower())
         #answer=cleanUp(answer)
         return answer
