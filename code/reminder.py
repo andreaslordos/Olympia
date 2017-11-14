@@ -1,6 +1,13 @@
 def setAlarm(when):
     import datetime
     from time import sleep
+    from os import chdir
+    
+    dirFile=open("dir.txt","r")
+    directory=dirFile.read()
+    dirFile.close()
+    
+    chdir(directory+"\\resources")
     
     months={"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,"July":7,"August":8,"September":9,"October":10,"November":11,"December":12}
 
@@ -140,4 +147,5 @@ def setAlarm(when):
         f=open("reminders.txt","w")
     f.write(str(playTime)+"#")
     f.close()
+    chdir(directory+"\\code")
     return playTime
