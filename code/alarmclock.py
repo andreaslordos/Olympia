@@ -1,5 +1,9 @@
 import datetime
 from time import sleep
+from os import chdir
+dirFile=open("dir.txt","r")
+directory=dirFile.read()
+chdir(dirFile+"\\resources")
 def alarmclock():
     try:
         datetime.datetime.now()
