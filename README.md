@@ -60,7 +60,7 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 ### Things I'm thinking on working on:
 
--RNatural Language Processing instead of looking for 'activation words'
+-Natural Language Processing instead of looking for 'activation words'
 
 -Using twilio to send text alerts
 
