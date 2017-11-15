@@ -2,16 +2,17 @@ def setAlarm(when):
     import datetime
     from time import sleep
     from os import chdir
-    
+
     dirFile=open("dir.txt","r")
     directory=dirFile.read()
     dirFile.close()
     
     chdir(directory+"\\resources")
-    
+
     months={"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,"July":7,"August":8,"September":9,"October":10,"November":11,"December":12}
 
     def removeAlarm():
+        #beta, still not operational
         try:
             f=open("reminders.txt","r")
         except:
@@ -140,7 +141,9 @@ def setAlarm(when):
         removeAlarm()
     else:
         playTime=parseReminder(when)
-        
+
+    realPlayTime=datetime.datetime(playTime.year,playTime.month,playTime.day,playTime.hour,playTime.minute,0)
+
     try:
         f=open("reminders.txt","a")
     except:
@@ -148,4 +151,5 @@ def setAlarm(when):
     f.write(str(playTime)+"#")
     f.close()
     chdir(directory+"\\code")
-    return playTime
+
+    return realPlayTime

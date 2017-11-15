@@ -28,7 +28,7 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
     except FileNotFoundError:
         input("Error! File not found. You did not run setup.py (found in master directory)")
         quit()
-    os.chdir(dir+"\\resources")
+    os.chdir(directory+"\\resources")
     def confirmName(doIntro):
         try:
             name=open("name.txt",'r')
@@ -148,8 +148,11 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
                 return False
 
     def voiceInput():
+        os.chdir(directory+"\\resources")
         r=sr.Recognizer()
         with sr.Microphone() as source:
+            mixer.music.load("beep.mp3")
+            mixer.music.play()
             audio=r.listen(source)
 
         try:

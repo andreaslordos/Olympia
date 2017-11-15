@@ -3,8 +3,7 @@ import os
 dirFile=open("dir.txt","r")
 directory=dirFile.read()
 dirFile.close()
-
-os.chdir(dirFile+"\\code")
+os.chdir(directory+"\\code")
 
 import speech_recognition as sr
 import pyttsx
@@ -17,35 +16,44 @@ from pygame import mixer
 from random import randint
 from time import sleep
 from determiner import determine
-from setup import setMeUp
+from startup import setMeUp
 from gtts import gTTS as tts
-from mutagen.mp3 import MP3
 import threading
 from subprocess import call
+from output_voice import voiceOutput
+from tinytag import TinyTag as tt
 
 now=datetime.datetime.now()
 year=now.year
 
 def voiceInput():
+    '''
     r=sr.Recognizer()
     with sr.Microphone() as source:
         audio=r.listen(source)
 
     try:
         os.chdir(directory+"\\resources")
+        mixer.init()
         mixer.music.load("2beep.mp3")
         os.chdir(directory+"\\code")
         mixer.music.play()
         voicequery=r.recognize_google(audio)
+        mixer.music.quit()
     except sr.UnknownValueError:
+        mixer.music.quit()
         #voiceOutput(["Sorry, I didn't quite get that."])
         return("ERROR_ID 000")
     except sr.RequestError as e:
+        mixer.music.quit()
         voiceOutput(["Network Error"])
         return("")
     return(voicequery)
+    '''
+    return input()
 
 def firstInput():
+    '''
     r=sr.Recognizer()
     with sr.Microphone() as source:
         audio=r.listen(source)
@@ -56,9 +64,12 @@ def firstInput():
     except sr.RequestError as e:
         return("")
     return(voicequery)
+    '''
+    return input()
 
 
 def voiceOutput(textToSay):
+    '''
     try:
         fullstr=""
         for strings in textToSay:
@@ -68,15 +79,17 @@ def voiceOutput(textToSay):
         os.chdir(directory+"\\resources")
         whatToSay.save("output.mp3")
         mixer.music.load("output.mp3")
-        os.chdir(directory+"\\code")
+        os.chdir(directory+"\\resources")
         mixer.music.play()
-        audio=MP3("output.mp3")
-        sleep(audio.info.length+2)
+        audio=tt.get("output.mp3")
+        sleep(audio.duration)
         mixer.music.stop()
     except ConnectionError:
         for strings in text:
             engine.say(strings)
         engine.runAndWait()
+    '''
+    print(textToSay)
     
 
 def thread_second():
@@ -136,9 +149,11 @@ while True:
         choice="olympia"
     if "olympia" in choice.lower():
         os.chdir(directory+"\\resources")
+        mixer.init()
         mixer.music.load("beep.mp3")
         os.chdir(directory+"\\code")
         mixer.music.play()
+        mixer.music.stop()
         choice=voiceInput()
         if choice=="ERROR_ID 000" and autoActivation==False:
             voiceOutput(["Sorry, I didn't quite get that."])

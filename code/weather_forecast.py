@@ -4,8 +4,12 @@ def Forecast(userinput):
     import logging
     from datetime import datetime as dt
     from random import randint
+    from os import chdir
     client=yweather.Client()
-    location=open("location.txt","r")
+    dirFile=open("dir.txt","r")
+    directory=dirFile.read()
+    dirFile.close()
+    location=open(directory+"\\resources\\location.txt","r")
     city=location.read()
     location.close()
     woeid=client.fetch_woeid(city)

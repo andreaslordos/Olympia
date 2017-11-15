@@ -1,9 +1,10 @@
 import datetime
 from time import sleep
 from os import chdir
+import sys
 dirFile=open("dir.txt","r")
 directory=dirFile.read()
-chdir(dirFile+"\\resources")
+chdir(directory+"\\resources")
 def alarmclock():
     try:
         datetime.datetime.now()
@@ -24,7 +25,7 @@ def alarmclock():
             secondSegment=dates.split(" ")[1]
             hour=int(secondSegment.split(":")[0])
             minutes=int(secondSegment.split(":")[1])
-            seconds=int(secondSegment.split(":")[2])
+            seconds=int((secondSegment.split(":")[2]).split(".")[0])
             alarmTime=datetime.datetime(year, month, day, hour, minutes, seconds, 0)
             if soonest==None and (alarmTime-now).total_seconds()>0:
                 soonest=(alarmTime-now).total_seconds()
@@ -46,10 +47,10 @@ def alarmclock():
             f.close()
             alarmclock()
         except Exception as e:
-            print(e)
+            print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
             input()
     except Exception as e:
-        print(e)
+        print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
         input()
 
 alarmclock()
