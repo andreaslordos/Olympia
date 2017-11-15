@@ -23,6 +23,12 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 7. Enjoy!
 
+
+## Quick-start guide
+
+After spending about an hour ironing out errors with libraries, you should finally be able to run Olympia. To activate Olympia, simply say "Olympia". Wait for the single beep, and then speak your command. When you hear a double-beep, that means Olympia is processing what you just said.
+
+
 ## Features
 
 ### Currently, the personal assistant can do the following:
@@ -70,6 +76,7 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 -Making Olympia able to communicate and comprehend multiple languages.
 
+
 ## Modularity
 
 To add a new module, it's just a matter of adding 3-4 lines of code in determiner.py file, which will help Olympia determine if your module is being activated, and coding the actual module itself - the module must take the form of a function that takes in inputs from the calling program (e.g what the user said) and returns what Olympia should "say" in return.
@@ -84,10 +91,6 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 
 5. Go to main.py, and under the line "whatToRun=determine(choice)", add an if (or elif) statement which reads: "elif whatToRun==[unique keyword]:" and then write the code that should be executed. Usually, this includes importing the module you wrote previously, running it and voiceOutputting the result
 
-
-## Quick-start guide
-
-After spending about an hour ironing out errors with libraries, you should finally be able to run Olympia. To activate Olympia, simply say "Olympia". Wait for the single beep, and then speak your command. When you hear a double-beep, that means Olympia is processing what you just said.
 
 ## Commands
 
