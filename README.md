@@ -5,6 +5,24 @@ If JARVIS had a trial version this would be it.
 Meet Olympia. She's an open-source, modular personal assistant. While Olympia boasts many built-in features, anyone can easily add their own features in, quite effortlessly.
 
 
+# Installation
+
+### Note: this has only been tested on Windows
+
+1. Download the repository as a zip file
+
+2. Navigate to the Olympia-master file in cmd/Terminal
+
+3. run: pip install -r requirements.txt
+
+4. run: python setup.py
+
+5. Navigate to the Olympia-master/code file
+
+6. run: python main.py
+
+7. Enjoy!
+
 ## Features
 
 ### Currently, the personal assistant can do the following:
@@ -32,6 +50,8 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 ### Things I'm currently working on:
 
 -World domination
+
+-Fixing bugs
 
 -Having a basic conversational skills ("How are you?", "Have a nice day", etc.)
 
