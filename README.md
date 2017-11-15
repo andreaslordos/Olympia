@@ -74,9 +74,15 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 To add a new module, it's just a matter of adding 3-4 lines of code in determiner.py file, which will help Olympia determine if your module is being activated, and coding the actual module itself - the module must take the form of a function that takes in inputs from the calling program (e.g what the user said) and returns what Olympia should "say" in return.
 
-In retrospect, Olympia has a structure which is very similar to that used in neural networks - there's the input layer, where the user says a command, there's the hidden layer, where Olympia scrapes the web to meet the users demand, and finally, there's the ouptut layer - where Olympia meets the users request.
+1. Write your module in the 'code' file. It should be in the form of a single function (which can contain multiple functions within it), and take userinput (which is what the user said) and return an output (what Olympia should say or do in return)
 
-For example, imagine you were to implement a news module. You would write an IF statement checking if the user said something along the lines of "news" or "headlines", and if he did, execute some code.
+2. Open code\determiner.py. Under the function "whichModule", write your own function which will return a unique keyword if a specific action word is detected (e.g. for music, an action word could be "play"). If no action word is detected, the function should just return. The function name should be "about(what your function is about)" (e.g. aboutMusic)
+
+3. Go down until you find the declaration of a list called modules. Append that list with the name of your function, e.g. Music. Leave out the "about"
+
+4. Go up to the very top, to a function called conflict resolution. Append conflict_dict your previously chosen unique keyword along with the priority your module should have in the event of two modules having their keywords activated. The higher the number you assign to your module, the more preferable it will be in the event of a clash.
+
+5. Go to main.py, and under the line "whatToRun=determine(choice)", add an if (or elif) statement which reads: "elif whatToRun==[unique keyword]:" and then write the code that should be executed. Usually, this includes importing the module you wrote previously, running it and voiceOutputting the result
 
 
 ## Quick-start guide
