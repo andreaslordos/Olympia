@@ -27,7 +27,6 @@ now=datetime.datetime.now()
 year=now.year
 
 def voiceInput():
-    '''
     r=sr.Recognizer()
     with sr.Microphone() as source:
         audio=r.listen(source)
@@ -49,11 +48,8 @@ def voiceInput():
         voiceOutput(["Network Error"])
         return("")
     return(voicequery)
-    '''
-    return input()
 
 def firstInput():
-    '''
     r=sr.Recognizer()
     with sr.Microphone() as source:
         audio=r.listen(source)
@@ -64,12 +60,10 @@ def firstInput():
     except sr.RequestError as e:
         return("")
     return(voicequery)
-    '''
     return input()
 
 
 def voiceOutput(textToSay):
-    '''
     try:
         fullstr=""
         for strings in textToSay:
@@ -88,8 +82,6 @@ def voiceOutput(textToSay):
         for strings in text:
             engine.say(strings)
         engine.runAndWait()
-    '''
-    print(textToSay)
     
 
 def thread_second():
