@@ -134,3 +134,15 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 OSError: [WinError 126] The specified module could not be found: (VLC)
 
 1. Install VLC (https://www.videolan.org/vlc/index.html)
+
+2. Search for libvlc.dll in the start menu
+
+3. Open the containing folder of libvlc.dll
+
+4. Copy the directory (e.g. C:\Users\Python Tutorials\Downloads\vlc-2.2.6-win64\vlc-2.2.6)
+
+5. Go back to your start menu, search for "Edit environment variables for your account"
+
+6. Edit the "PATH" variable, add a semicolon to the end of the variable value and paste the directory
+
+7. Press Ok twice
