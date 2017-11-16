@@ -6,12 +6,8 @@ dirFile.close()
 os.chdir(directory+"\\code")
 
 import speech_recognition as sr
-import pyttsx
-#import urllib.request
-#import pafy
 import vlc
 import datetime
-#import yweather
 from pygame import mixer
 from random import randint
 from time import sleep
@@ -41,7 +37,7 @@ def voiceInput():
         mixer.music.quit()
     except sr.UnknownValueError:
         mixer.music.quit()
-        #voiceOutput(["Sorry, I didn't quite get that."])
+        voiceOutput(["Sorry, I didn't quite get that."])
         return("ERROR_ID 000")
     except sr.RequestError as e:
         mixer.music.quit()
@@ -77,12 +73,7 @@ def voiceOutput(textToSay):
         mixer.music.play()
         audio=tt.get("output.mp3")
         sleep(audio.duration)
-        mixer.music.stop()
-    except ConnectionError:
-        for strings in text:
-            engine.say(strings)
-        engine.runAndWait()
-    
+        mixer.music.stop()    
 
 def thread_second():
     call(["python","alarmclock.py"])
@@ -114,11 +105,6 @@ def brackets_remove(string):
 
 
 mixer.init()
-engine=pyttsx.init()
-rate=engine.getProperty('rate')
-engine.setProperty('rate',rate-60)
-volume=engine.getProperty('volume')
-engine.setProperty('volume',1)
 
 jokes=["It’s hard to explain puns to kleptomaniacs because they always take things literally.","A soldier survived mustard gas in battle, and then pepper spray by the police. He's now a seasoned veteran.","What's the best thing about Switzerland? I don't know, but their flag is a huge plus.","A Buddhist walks up to a hotdog stand and says, Make me one with everything.","What's the difference between my ex and the titanic? The titanic only went down on 1,000 people.","Two fish are sitting in a tank. One looks over at the other and says: 'Hey, do you know how to drive this thing?'","I told my doctor that I broke my arm in two places. He told me to stop going to those places.","How do you keep an stupid person in suspense?","I hate Russian dolls. They're so full of themselves.","My granddad has the heart of a lion and a lifetime ban from the San Diego Zoo.","Rick Astley will let you borrow any movie from his Pixar collection, except one. He's never gonna give you up."]
 
