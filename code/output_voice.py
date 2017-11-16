@@ -22,7 +22,7 @@ def voiceOutput(textToSay):
         mixer.music.play()
         try:
             chdir(directory+"\\resources")
-            audio=tt("output.mp3")
+            audio=tt.get("output.mp3")
         except:
             print(getcwd())
             chdir(directory+"\\code")
