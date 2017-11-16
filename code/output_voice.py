@@ -31,13 +31,5 @@ def voiceOutput(textToSay):
         mixer.music.stop()
         mixer.quit()
     except ConnectionError:
-        import pyttsx
-        engine=pyttsx.init()
-        rate=engine.getProperty('rate')
-        engine.setProperty('rate',rate-60)
-        volume=engine.getProperty('volume')
-        engine.setProperty('volume',1)
-        for strings in text:
-            engine.say(strings)
-        engine.runAndWait()
+        print("connection error")
     return
