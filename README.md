@@ -19,7 +19,7 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 5. Navigate to the Olympia-master/code file
 
-6. run: python main.py
+6. run: python main.py (scroll down to troubleshooting if you're getting any errors)
 
 7. Enjoy!
 
@@ -127,3 +127,10 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 "Set an alarm for (time in P.M./A.M.) on the (date)"
 
 "Set a timer for 30 minutes"
+
+
+## Troubleshooting
+
+OSError: [WinError 126] The specified module could not be found: (VLC)
+
+1. Install VLC (https://www.videolan.org/vlc/index.html)
