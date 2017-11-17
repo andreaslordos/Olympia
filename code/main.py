@@ -73,7 +73,11 @@ def voiceOutput(textToSay):
         mixer.music.play()
         audio=tt.get("output.mp3")
         sleep(audio.duration)
-        mixer.music.stop()    
+        mixer.music.stop()
+    except:
+        print("Error with voiceoutput")
+        input()
+    return
 
 def thread_second():
     call(["python","alarmclock.py"])
