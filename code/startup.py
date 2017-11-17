@@ -150,7 +150,7 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
     def voiceInput():
         os.chdir(directory+"\\resources")
         r=sr.Recognizer()
-        mixer.music.init()
+        mixer.init()
         with sr.Microphone() as source:
             mixer.music.load("beep.mp3")
             mixer.music.play()
