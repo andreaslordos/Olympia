@@ -37,7 +37,7 @@ After spending about an hour ironing out errors with libraries, you should final
 
 -Answer a question (e.g "What is a tree?" , or "what is astronomy")
 
--Answer any general-knowledge question (e.g "How far away is the Sun from the Earth?", or "Who is the CEO of Github?")
+-Answer any general-knowledge question - activated by saying "Can I ask you a question?" and when prompted, ask the question (e.g "How far away is the Sun from the Earth?", or "Who is the CEO of Github?")
 
 -Define, spell and find synonyms of a word
 
