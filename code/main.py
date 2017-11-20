@@ -23,24 +23,29 @@ now=datetime.datetime.now()
 year=now.year
 
 def voiceInput():
+    os.chdir(directory+"\\resources")
     r=sr.Recognizer()
+    mixer.init()
+    mixer.music.load("beep.mp3")
+    mixer.music.play()
+    beepDuration=tt.get("beep.mp3")
+    sleep(beepDuration.duration)
+    mixer.music.stop()
     with sr.Microphone() as source:
         audio=r.listen(source)
-
     try:
-        os.chdir(directory+"\\resources")
         mixer.init()
         mixer.music.load("2beep.mp3")
         os.chdir(directory+"\\code")
         mixer.music.play()
         voicequery=r.recognize_google(audio)
-        mixer.music.quit()
+        mixer.music.stop()
     except sr.UnknownValueError:
-        mixer.music.quit()
+        mixer.music.stop()
         voiceOutput(["Sorry, I didn't quite get that."])
         return("ERROR_ID 000")
     except sr.RequestError as e:
-        mixer.music.quit()
+        mixer.music.stop()
         voiceOutput(["Network Error"])
         return("")
     return(voicequery)
