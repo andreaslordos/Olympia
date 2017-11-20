@@ -16,7 +16,6 @@ def playMusic(userinput, choiceIsPure):
 
 
     '''
-    import pyttsx
     import pafy
     import vlc
     import lxml.html
@@ -43,11 +42,6 @@ def playMusic(userinput, choiceIsPure):
         p = i.media_player_new()
         p.set_mrl(playthis.url)
         return p
-
-
-    def initEngine():
-        engine=pyttsx.init()
-        return engine
 
     def getCorrectLink(urls):
         pafy.set_api_key('AIzaSyDvf2A3-ZDoQciNhgxdbEO2NIaQyCYY33A')
@@ -79,7 +73,6 @@ def playMusic(userinput, choiceIsPure):
             if userinput[x].lower() in triggerword:
                 break
         userinput=" ".join(userinput[x+1:])
-    engine=initEngine()
     urls=youSearch(userinput)
     shouldbreak=False
     counter=0
