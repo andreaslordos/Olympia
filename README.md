@@ -131,7 +131,7 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 
 ## Troubleshooting
 
-OSError: [WinError 126] The specified module could not be found: (VLC)
+# OSError: [WinError 126] The specified module could not be found: (VLC)
 
 1. Install VLC (https://www.videolan.org/vlc/index.html)
 
@@ -146,3 +146,9 @@ OSError: [WinError 126] The specified module could not be found: (VLC)
 6. Edit the "PATH" variable, add a semicolon to the end of the variable value and paste the directory
 
 7. Press Ok twice
+
+# Error while installing pygame:
+
+Try running: python -m pip install --upgrade pip
+
+If that doesn't work, try this: https://stackoverflow.com/questions/41153444/installing-pygame-with-pip-command-python-setup-py-egg-info-failed-with-error
