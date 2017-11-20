@@ -152,3 +152,5 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 Try running: python -m pip install --upgrade pip
 
 If that doesn't work, try this: https://stackoverflow.com/questions/41153444/installing-pygame-with-pip-command-python-setup-py-egg-info-failed-with-error
+
+Re-run steps 2 and 3 of installation process
