@@ -38,8 +38,7 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
         except FileNotFoundError:
             if doIntro==True:
                 voiceOutput(["Hello! I'm Olympia, your personal Artificial Intelligent assistant.","I can do a wide range of things for you - including playing music, giving you the weather, the news and setting calendar reminders. If you ever need any help, just tell me so by saying HELP please.","Lets get started with some basic setup. What would you like me to call you?"])
-            else:
-                voiceOutput(["What would you like me to call you?"])
+            voiceOutput(["What would you like me to call you?"])
             username=voiceInput()
             voiceOutput(["Can you confirm you would like me to call you "+username+"?"])
             isNameRight=voiceInput()
