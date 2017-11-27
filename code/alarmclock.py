@@ -2,9 +2,8 @@ import datetime
 from time import sleep
 from os import chdir
 import sys
-dirFile=open("dir.txt","r")
-directory=dirFile.read()
-chdir(directory+"\\resources")
+from changeDir import changeDirectory
+changeDirectory("resources")
 def alarmclock():
     try:
         datetime.datetime.now()
@@ -33,8 +32,6 @@ def alarmclock():
                 soonest=(alarmTime-now).total_seconds()
         print(soonest)
         sleep(soonest)
-        from play_music import playMusic
-        p=playMusic("country road",True)
         input()
         p.stop()
         try:
