@@ -1,10 +1,5 @@
 #Main - calling program
 import os
-dirFile=open("dir.txt","r")
-directory=dirFile.read()
-dirFile.close()
-os.chdir(directory+"\\code")
-
 import speech_recognition as sr
 import vlc
 import datetime
@@ -18,12 +13,13 @@ import threading
 from subprocess import call
 from output_voice import voiceOutput
 from tinytag import TinyTag as tt
+from changeDir import changeDirectory
 
 now=datetime.datetime.now()
 year=now.year
 
 def voiceInput():
-    os.chdir(directory+"\\resources")
+    changeDirectory("resources")
     r=sr.Recognizer()
     mixer.init()
     mixer.music.load("beep.mp3")
@@ -36,7 +32,7 @@ def voiceInput():
     try:
         mixer.init()
         mixer.music.load("2beep.mp3")
-        os.chdir(directory+"\\code")
+        os.chdir("code")
         mixer.music.play()
         voicequery=r.recognize_google(audio)
         mixer.music.stop()
@@ -71,10 +67,9 @@ def voiceOutput(textToSay):
             fullstr+=strings+". "
         fullstr=fullstr[:-1]
         whatToSay=tts(text=fullstr,lang='en')
-        os.chdir(directory+"\\resources")
+        changeDirectory("resources")
         whatToSay.save("output.mp3")
         mixer.music.load("output.mp3")
-        os.chdir(directory+"\\resources")
         mixer.music.play()
         audio=tt.get("output.mp3")
         sleep(audio.duration)
@@ -135,10 +130,10 @@ while True:
     else:
         choice="olympia"
     if "olympia" in choice.lower():
-        os.chdir(directory+"\\resources")
+        changeDirectory("resources")
         mixer.init()
         mixer.music.load("beep.mp3")
-        os.chdir(directory+"\\code")
+        changeDirectory("code")
         mixer.music.play()
         mixer.music.stop()
         choice=voiceInput()
@@ -277,7 +272,7 @@ while True:
                     print("Cancelling")
                 else:
                     didntGetThat=True
-                    os.chdir(directory+"\\resources")
+                    changeDirectory("resources")
                     while didntGetThat==True:
                         didntGetThat=False
                         confirmedName=True
@@ -301,6 +296,6 @@ while True:
                             voiceOutput(["Sorry, I didn't quite get that. Can you repeat?"])
                             settingToChange=voiceInput()
                             didntGetThat=True
-                    os.chdir(directory+"\\code")
+                    changeDirectory("code")
                     name,dateofbirth,gender,location=setMeUp(confirmedName,confirmedGender,confirmedBirthday,confirmedLocation)
                     voiceOutput(["Change confirmed."])
