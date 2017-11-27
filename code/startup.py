@@ -18,17 +18,12 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
     from pygame import mixer
     import os
     from output_voice import voiceOutput
+    from changeDir import changeDirectory
+    
     now=datetime.datetime.now()
     year=now.year
     mixer.init()
-    try:
-        dirFile=open("dir.txt","r")
-        directory=dirFile.read()
-        dirFile.close()
-    except FileNotFoundError:
-        input("Error! File not found. You did not run setup.py (found in master directory)")
-        quit()
-    os.chdir(directory+"\\resources")
+    changeDirectory("resources")
     def confirmName(doIntro):
         try:
             name=open("name.txt",'r')
@@ -147,7 +142,7 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
                 return False
 
     def voiceInput():
-        os.chdir(directory+"\\resources")
+        changeDirectory("resources")
         r=sr.Recognizer()
         mixer.init()
         with sr.Microphone() as source:
