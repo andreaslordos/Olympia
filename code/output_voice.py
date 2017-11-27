@@ -5,12 +5,10 @@ from time import sleep
 from os import chdir
 from os import remove
 from os import getcwd
-dirFile=open("dir.txt","r")
-directory=dirFile.read()
-dirFile.close()
+from changeDir import changeDirectory
 def voiceOutput(textToSay):
     try:
-        chdir(directory+"\\resources")
+        changeDirectory("resources")
         fullstr=""
         for strings in textToSay:
             fullstr+=strings+". "
@@ -21,11 +19,11 @@ def voiceOutput(textToSay):
         mixer.music.load("output.mp3")
         mixer.music.play()
         try:
-            chdir(directory+"\\resources")
+            changeDirectory("resources")
             audio=tt.get("output.mp3")
         except:
             print(getcwd())
-            chdir(directory+"\\code")
+            changeDirectory("code")
             audio=tt.get("output.mp3")
         sleep(audio.duration)
         mixer.music.stop()
