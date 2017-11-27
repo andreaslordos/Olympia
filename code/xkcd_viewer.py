@@ -1,16 +1,14 @@
 def xkcd():
+    from changeDir import changeDirectory
     from PIL import Image
     import xkcd
     from os import chdir
-    dirFile=open("dir.txt","r")
-    directory=dirFile.read()
-    dirFile.close()
     comic=xkcd.getRandomComic()
-    comic.download(output=directory+'\\resources',outputFile='xkcd.jpg',silent=False)
-    chdir(directory+"\\resources")
+    changeDirectory("resources")
+    comic.download(outputFile='xkcd.jpg',silent=False)
     img=Image.open('xkcd.jpg')
     img.show()
-    chdir(directory+"\\code")
+    changeDirectory("code")
     return img
     
     
