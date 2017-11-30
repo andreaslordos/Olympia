@@ -7,7 +7,9 @@ Meet Olympia. She's an open-source, modular personal assistant. While Olympia bo
 
 # Installation
 
-### Note: this has only been tested on Windows
+### Note: this has only been tested on Windows. testing-branch is the cross-platform version but still under development
+
+0. Download Python if you haven't already. Any version above 3.3 should be fine. Ideally, you shoud download current one.
 
 1. Download the repository as a zip file
 
