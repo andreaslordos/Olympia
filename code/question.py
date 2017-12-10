@@ -18,7 +18,6 @@ def answer(userinput):
     try:
         app_id=[REDACTED! GET YOUR OWN APP_ID AT https://developer.wolframalpha.com]
         answer=getSpoken(app_id,userinput.lower())
-        #answer=cleanUp(answer)
         return answer
     except:
         return "Sorry, I don't know."
