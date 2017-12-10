@@ -1,3 +1,9 @@
+'''
+Runs as a seperate thread to main.py
+Checks to see if there's any reminder (whether that be a timer or alarm) on reminders.txt. If there is something, it will sleep for until
+the time has elapsed, and then play music (currently defaulted to some shitty country music)
+'''
+
 import datetime
 from time import sleep
 from os import chdir
