@@ -1,3 +1,7 @@
+'''
+Used to set alarms or timers. Appends the reminder.txt file with the date of the alarm/timer and then starts up alarmclock.py so that
+it stays updated
+'''
 def setAlarm(when):
     import datetime
     from time import sleep
