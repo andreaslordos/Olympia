@@ -64,26 +64,6 @@ def firstInput():
     return input()
 
 
-def voiceOutput(textToSay):
-    try:
-        fullstr=""
-        for strings in textToSay:
-            fullstr+=strings+". "
-        fullstr=fullstr[:-1]
-        whatToSay=tts(text=fullstr,lang='en')
-        os.chdir(directory+"\\resources")
-        whatToSay.save("output.mp3")
-        mixer.music.load("output.mp3")
-        os.chdir(directory+"\\resources")
-        mixer.music.play()
-        audio=tt.get("output.mp3")
-        sleep(audio.duration)
-        mixer.music.stop()
-    except:
-        print("Error with voiceoutput")
-        input()
-    return
-
 def thread_second():
     call(["python","alarmclock.py"])
 
@@ -277,14 +257,13 @@ while True:
                     print("Cancelling")
                 else:
                     didntGetThat=True
-                    os.chdir(directory+"\\resources")
                     while didntGetThat==True:
+                        os.chdir(directory+"\\resources")
                         didntGetThat=False
                         confirmedName=True
                         confirmedGender=True
                         confirmedBirthday=True
                         confirmedLocation=True
-                        print(settingToChange)
                         if "name" in settingToChange:
                             os.remove("name.txt")
                             confirmedName=False
