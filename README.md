@@ -4,14 +4,16 @@ If JARVIS had a trial version this would be it.
 
 Meet Olympia. She's an open-source, modular personal assistant. While Olympia boasts many built-in features, anyone can easily add their own features in, quite effortlessly.
 
+So far, she can only cope with Windows. However, head over to testing-branch if you want to help change that.
+
 
 # Installation
 
 ### Note: this has only been tested on Windows. testing-branch is the cross-platform version but still under development
 
-0. Download Python (https://www.python.org/downloads/) if you haven't already. Any version above 3.4 should be fine.
+0. Download Python (https://www.python.org/downloads/) if you haven't already. Any version above 3.2 should be fine.
 
-1. Download the repository as a zip file
+1. Download the repository as a zip file. Extract the zip file to any location
 
 2. Navigate to the Olympia-master file in cmd/Terminal
 
@@ -94,7 +96,7 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 5. Go to main.py, and under the line "whatToRun=determine(choice)", add an if (or elif) statement which reads: "elif whatToRun==[unique keyword]:" and then write the code that should be executed. Usually, this includes importing the module you wrote previously, running it and voiceOutputting the result
 
 
-## Commands
+## Commands (you must say "Olympia" before each command and wait for the beep)
 
 "Play (song name)"
 
@@ -110,7 +112,7 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 
 "Tell me a joke"
 
-"What is (thing)"...."Tell me more about (thing)"
+"What is (thing)"...."Tell me more about (thing)" [searches wikipedia for (thing)]
 
 "Define (word)"
 
@@ -118,7 +120,7 @@ To add a new module, it's just a matter of adding 3-4 lines of code in determine
 
 "Spell (word)"
 
-"Can I ask you a question?" .... (question)
+"Can I ask you a question?" (wait for confirmation) (question)
 
 "Show me an xkcd"
 
