@@ -62,7 +62,6 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
         except FileNotFoundError:
             voiceOutput(["What is your gender? If you prefer not to state it, say so!"])
             prefgender=voiceInput()
-            print(prefgender)
             if prefgender.lower()[0:2]=="ma" or prefgender.lower()=="man" or prefgender.lower()=="boy" or prefgender.lower()=="men":
                 prefgender="male"
             elif prefgender.lower()=="female" or prefgender.lower()=="woman" or prefgender.lower()=="women" or prefgender.lower()=="girl":
@@ -92,14 +91,11 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
         except FileNotFoundError:
             voiceOutput(["What is your birthday, in the format of day, month and year? (for example first of January, nineteen ninety five","If you prefer not to state it, say so!"])
             dob=voiceInput()
-            print(dob)
             for word in dob.split():
                 if dict1.get(word.lower())!=None:
-                    print("Got day")
                     day=int(dict1[word.lower()])
                 elif dict2.get(word.lower())!=None:
                     month=int(dict2[word.lower()])
-                    print("Got month")
                 elif word.isdigit()==True:
                     if int(word)>1900 and int(word)<year:
                         year=int(word)
