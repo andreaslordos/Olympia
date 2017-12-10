@@ -51,3 +51,5 @@ yahooweather == 0.8
 # startup.py: 17
 # weather_forecast.py: 2
 yweather == 0.1.1
+
+cssselect == 1.0.1
