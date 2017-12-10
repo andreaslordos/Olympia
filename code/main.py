@@ -1,4 +1,9 @@
-#Main - calling program
+'''
+Main - calling program
+This program waits to hear the activation word (Olympia), and then waits to hear the command. Once it has the command, it will send the
+command to determiner.py who will figure out what the user intended, and will then execute code whose output will vary depending on the
+users parameters.
+'''
 import os
 dirFile=open("dir.txt","r")
 directory=dirFile.read()
