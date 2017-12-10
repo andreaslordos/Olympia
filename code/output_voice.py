@@ -1,3 +1,8 @@
+'''
+Input: textToSay, list (e.g. ["Hello world"] or ["Hello world","My name is Olympia"]
+Output: sound
+'''
+
 from gtts import gTTS as tts
 from os import chdir
 from tinytag import TinyTag as tt
