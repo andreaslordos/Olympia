@@ -1,4 +1,5 @@
 def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
+    print(confirmedLocation)
     '''
     Input: confirmedName, boolean /// confirmedBirthday, boolean /// confirmedGender, boolean /// confirmedLocation, boolean
     Output: name, string /// gender, string /// dateofbirth, string /// location, string
@@ -62,6 +63,7 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
         except FileNotFoundError:
             voiceOutput(["What is your gender? If you prefer not to state it, say so!"])
             prefgender=voiceInput()
+            print(prefgender)
             if prefgender.lower()[0:2]=="ma" or prefgender.lower()=="man" or prefgender.lower()=="boy" or prefgender.lower()=="men":
                 prefgender="male"
             elif prefgender.lower()=="female" or prefgender.lower()=="woman" or prefgender.lower()=="women" or prefgender.lower()=="girl":
@@ -91,11 +93,14 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
         except FileNotFoundError:
             voiceOutput(["What is your birthday, in the format of day, month and year? (for example first of January, nineteen ninety five","If you prefer not to state it, say so!"])
             dob=voiceInput()
+            print(dob)
             for word in dob.split():
                 if dict1.get(word.lower())!=None:
+                    print("Got day")
                     day=int(dict1[word.lower()])
                 elif dict2.get(word.lower())!=None:
                     month=int(dict2[word.lower()])
+                    print("Got month")
                 elif word.isdigit()==True:
                     if int(word)>1900 and int(word)<year:
                         year=int(word)
@@ -163,8 +168,8 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
             return("")
         return(voicequery)
 
-    def setup(confirmedName,confirmedGender,confirmedBirthday,confirmedLocation):
-        while confirmedName==False or confirmedGender==False or confirmedBirthday==False and confirmedLocation==False:
+    def setup(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
+        while confirmedName==False or confirmedGender==False or confirmedBirthday==False or confirmedLocation==False:
             if confirmedName==False:
                 confirmedName=confirmName(True)
                 while confirmedName!=True:
@@ -187,7 +192,8 @@ def setMeUp(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation):
                     confirmedLocation=confirmLocation()
 
 
-    setup(confirmedName,confirmedGender,confirmedLocation,confirmedBirthday)
+    setup(confirmedName,confirmedBirthday,confirmedGender,confirmedLocation)
+    print("Done with setup")
     genderf=open("gender.txt","r")
     gender=genderf.read()
     genderf.close()
