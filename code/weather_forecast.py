@@ -1,3 +1,7 @@
+'''
+This is really bad code. But it works better than almost any other module, so I don't really want to touch it.
+Essentially, it figures out the day (don't ask me how) the user wants data on, gets data from Yahoo's weather API and returns it to main
+'''
 def Forecast(userinput):
     import yweather
     from yahooweather import YahooWeather,UNIT_C
