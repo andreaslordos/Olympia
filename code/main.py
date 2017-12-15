@@ -5,11 +5,8 @@ command to determiner.py who will figure out what the user intended, and will th
 users parameters.
 '''
 import os
-dirFile=open("dir.txt","r")
-directory=dirFile.read()
-dirFile.close()
-os.chdir(directory+"\\code")
-
+from changeDir import changeDirectory as cd
+cd("code")
 import speech_recognition as sr
 import vlc
 import datetime
@@ -28,7 +25,7 @@ now=datetime.datetime.now()
 year=now.year
 
 def voiceInput():
-    os.chdir(directory+"\\resources")
+    cd("resources")
     r=sr.Recognizer()
     mixer.init()
     mixer.music.load("beep.mp3")
@@ -41,7 +38,7 @@ def voiceInput():
     try:
         mixer.init()
         mixer.music.load("2beep.mp3")
-        os.chdir(directory+"\\code")
+        cd("code")
         mixer.music.play()
         voicequery=r.recognize_google(audio)
         mixer.music.stop()
@@ -120,10 +117,10 @@ while True:
     else:
         choice="olympia"
     if "olympia" in choice.lower():
-        os.chdir(directory+"\\resources")
+        cd("resources")
         mixer.init()
         mixer.music.load("beep.mp3")
-        os.chdir(directory+"\\code")
+        cd("code")
         mixer.music.play()
         mixer.music.stop()
         choice=voiceInput()
@@ -263,7 +260,7 @@ while True:
                 else:
                     didntGetThat=True
                     while didntGetThat==True:
-                        os.chdir(directory+"\\resources")
+                        cd("resources")
                         didntGetThat=False
                         confirmedName=True
                         confirmedGender=True
@@ -285,6 +282,6 @@ while True:
                             voiceOutput(["Sorry, I didn't quite get that. Can you repeat?"])
                             settingToChange=voiceInput()
                             didntGetThat=True
-                    os.chdir(directory+"\\code")
+                    cd("code")
                     name,dateofbirth,gender,location=setMeUp(confirmedName,confirmedGender,confirmedBirthday,confirmedLocation)
                     voiceOutput(["Change confirmed."])
