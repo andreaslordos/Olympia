@@ -7,13 +7,14 @@ from gtts import gTTS as tts
 from os import chdir
 from tinytag import TinyTag as tt
 from time import sleep
+from changeDir import changeDirectory as cd
 import subprocess
 dirFile=open("dir.txt","r")
 directory=dirFile.read()
 dirFile.close()
 def voiceOutput(textToSay):
     try:
-        chdir(directory+"\\resources")
+        cd("resources")
         fullstr=""
         for strings in textToSay:
             fullstr+=strings+". "
