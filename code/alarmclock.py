@@ -8,9 +8,11 @@ import datetime
 from time import sleep
 from os import chdir
 import sys
+from changeDir import changeDirectory as cd
+
 dirFile=open("dir.txt","r")
 directory=dirFile.read()
-chdir(directory+"\\resources")
+cd("resources")
 def alarmclock():
     try:
         datetime.datetime.now()
