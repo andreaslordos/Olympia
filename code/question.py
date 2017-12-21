@@ -16,8 +16,10 @@ def answer(userinput):
         return answer
     
     try:
-        app_id=[REDACTED! GET YOUR OWN APP_ID AT https://developer.wolframalpha.com]
+        app_id="GET YOUR OWN APP_ID AT https://developer.wolframalpha.com"
         answer=getSpoken(app_id,userinput.lower())
         return answer
     except:
-        return "Sorry, I don't know."
+        print("Sorry, but you need to get your own app ID. You can get one at developer.wolframalpha.com to enable the Wolfram Alpha API")
+        return "Sorry, you need your own app I.D."
+
