@@ -77,13 +77,6 @@ def runAlarm():
     processThread.start()
     return
 
-def checkForBirthday(dateofbirth):
-    dateofbirth=dateofbirth[5:]
-    datetoday=str(now)
-    if datetoday[5:10]==dateofbirth:
-        return True
-    return False
-
 def brackets_remove(string):
     returnString=""
     foundBracket=False
@@ -104,10 +97,7 @@ jokes=["It’s hard to explain puns to kleptomaniacs because they always take th
 
 name,dateofbirth,gender,location=setMeUp(False,False,False,False)
 
-isBirthday=checkForBirthday(dateofbirth)
 
-if isBirthday==True:
-    voiceOutput(["Happy birthday "+name, "I hope you have a wonderful day!"])
 runAlarm()
 voiceOutput(["Hello, "+name])
 print("To activate me, say 'Olympia'")
@@ -209,14 +199,6 @@ while True:
             playTime=setAlarm(choice)
             voiceOutput(["Alarm set for "+str(playTime)])
             runAlarm()
-        elif whatToRun=="bohemian":
-            try:
-                pm.playMusic("Bohemian Rhapsody",True)
-            except NameError:
-                import play_music as pm
-                pm.playMusic("Bohemian Rhapsody",True)
-        elif choice.lower()=="what is the meaning of life" or choice.lower()=="what is the meaning of life the universe and everything?":
-            voiceOutput(["42."])
         elif "joke" in choice.lower():
             try:
                 usedjokes=usedjokes
